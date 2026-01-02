@@ -20,10 +20,10 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // Add rest response helpers
-app.use(restResponse());
+app.use(restResponse);
 
 // Authentication middleware
-app.use(auth());
+app.use(auth);
 
 // Error handling
 app.use(notFound);
