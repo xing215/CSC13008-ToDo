@@ -3,10 +3,11 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors"
 
-import restResponse from './middlewares/restResponse.js'
-import notFound from './middlewares/notFound.js'
-import errorHandler from './middlewares/errorHandler.js'
+import restResponse from './middlewares/restResponse.js';
+import notFound from './middlewares/notFound.js';
+import errorHandler from './middlewares/errorHandler.js';
 import auth from "./middlewares/auth.js";
+import apiRouter from "./api.js"
 
 const app = express();
 
@@ -24,6 +25,9 @@ app.use(restResponse);
 
 // Authentication middleware
 app.use(auth);
+
+// API endpoints
+app.use('/api', apiRouter);
 
 // Error handling
 app.use(notFound);
