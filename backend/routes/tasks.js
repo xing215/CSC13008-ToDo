@@ -6,4 +6,7 @@ const route = new Router();
 // GET: Get taskes with filter and pagination
 route.get('/', taskController.listTasks);
 
+// GET: Get specific task
+route.get('/:id', taskController.getTasks);
+
 export default route;

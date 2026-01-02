@@ -31,7 +31,19 @@ const controllers = {
                 meta,
             });
         }).catch(next);
-    }
+    },
+    getTasks: function (req, res, next) {
+        const id = Number(req.params.id);
+        taskServices.findById(id).then((tasks) => {
+            if (tasks) {
+                res.ok(tasks);
+            } else {
+                res.notFound({
+                    message: `Task with id ${id} is not found`,
+                });
+            }
+        }).catch(next);
+    },
 }
 
 export default controllers;
