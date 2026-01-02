@@ -6,6 +6,7 @@ import cors from "cors"
 import restResponse from './middlewares/restResponse.js'
 import notFound from './middlewares/notFound.js'
 import errorHandler from './middlewares/errorHandler.js'
+import auth from "./middlewares/auth.js";
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.use(bodyParser.json());
 
 // Add rest response helpers
 app.use(restResponse());
+
+// Authentication middleware
+app.use(auth());
 
 // Error handling
 app.use(notFound);
