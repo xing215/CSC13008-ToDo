@@ -32,7 +32,7 @@ const controllers = {
             });
         }).catch(next);
     },
-    getTasks: function (req, res, next) {
+    getTask: function (req, res, next) {
         const id = Number(req.params.id);
         taskServices.findById(id).then((tasks) => {
             if (tasks) {
@@ -43,6 +43,11 @@ const controllers = {
                 });
             }
         }).catch(next);
+    },
+    createTask: function (req, res, next) {
+        taskServices.create(req.body).then((task) => {
+            return res.created(task);
+        });
     },
 }
 

@@ -10,6 +10,10 @@ const service = {
         const result = await db.select().from(tasks).where(eq(tasks.id, id));
         return result[0];
     },
+    create: async function(task) {
+        const result = await db.insert(tasks).values(task).returning();
+        return result[0];
+    },
 };
 
 export default service;
