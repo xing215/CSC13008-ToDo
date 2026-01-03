@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useApi } from '../../contexts/ApiContext';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 5;
 
 function Table( { categories, selectedCategories } ) {
     const api = useApi();
