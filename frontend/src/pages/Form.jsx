@@ -4,6 +4,7 @@ import { useApi } from '../contexts/ApiContext';
 import { useForm } from 'react-hook-form';
 import { taskSchema } from '../../utils/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { successModal, errorModal } from '../components/Form/submitModals';
 
 function List() {
     const api = useApi();
@@ -14,7 +15,6 @@ function List() {
         try {
             const data = await api.get('/categories');
             setCategories(data);
-            console.log('Categories fetched', data);
         } catch (error) {
             console.error('Failed to fetch categories:', error);
         }
@@ -34,12 +34,10 @@ function List() {
     const onSubmit = (data) => {
         api.post('/tasks', data)
             .then((response) => {
-                alert('Task created successfully!');
-                console.log('Task created:', response);
+                successModal(response);
             })
             .catch((error) => {
-                alert(`Failed to create task: ${error.message}`);
-                console.error('Error creating task:', error);
+                errorModal(error);
             });
     };
 
