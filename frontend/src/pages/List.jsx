@@ -22,10 +22,6 @@ function List() {
         fetchCategories();
     }, []);
 
-    useEffect(() => {
-        console.log('Selected categories changed:', selectedCategories);
-    }, [selectedCategories]);
-
     return (
         <>
             <Nav />
